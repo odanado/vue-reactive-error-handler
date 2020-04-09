@@ -31,6 +31,8 @@ describe("plugin", (): void => {
 
   it("should be correct", async (): Promise<void> => {
     (vm.$children[0].$refs as any).button.click();
+
+    // TODO: $error.error :(
     expect(vm.$error.error).toBeUndefined();
     await vm.$nextTick();
     expect(vm.$error.error).toBeDefined();
