@@ -35,6 +35,8 @@ describe("plugin", (): void => {
     // TODO: $error.error :(
     expect(vm.$error.error).toBeUndefined();
     await vm.$nextTick();
+    // for node 10
+    await new Promise(resolve => process.nextTick(resolve));
     expect(vm.$error.error).toBeDefined();
     expect(vm.$error.error).toEqual(expected);
 
