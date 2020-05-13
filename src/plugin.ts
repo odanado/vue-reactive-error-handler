@@ -33,6 +33,10 @@ export const plugin: PluginObject<Options> = {
         return originalErrorHandler(err, vm, info);
       }
 
+      if (process.env.NODE_ENV !== "production") {
+        console.error(err);
+      }
+
       return true;
     };
   }
