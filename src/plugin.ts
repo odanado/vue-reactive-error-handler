@@ -1,10 +1,7 @@
 import Vue, { PluginObject } from "vue";
 
-export type OnError = (err: Error, vm: Vue, info: string) => void | boolean;
-
 export type Options = {
   timeout?: number;
-  onError?: OnError;
 };
 
 export type State = {
@@ -23,7 +20,7 @@ export const plugin: PluginObject<Options> = {
   install(Vue, options) {
     Vue.prototype.$error = state;
 
-    // TODO: backup origin errorHandler
+    const originalErrorHandler = Vue.config.errorHandler;
 
     Vue.config.errorHandler = (err, vm, info): void | boolean => {
       state.value = err;
@@ -32,8 +29,8 @@ export const plugin: PluginObject<Options> = {
         state.value = undefined;
       }, options?.timeout || 3000);
 
-      if (options?.onError) {
-        return options.onError(err, vm, info);
+      if (originalErrorHandler) {
+        return originalErrorHandler(err, vm, info);
       }
 
       return true;
