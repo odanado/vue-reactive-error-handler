@@ -1,4 +1,8 @@
 # vue-reactive-error-handler
+[![npm version](https://badge.fury.io/js/vue-reactive-error-handler.svg)](https://www.npmjs.com/package/vue-reactive-error-handler)
+[![GitHub Actions](https://github.com/odanado/vue-reactive-error-handler/workflows/Node%20CI/badge.svg)](https://github.com/odanado/vue-reactive-error-handler)
+
+
 You can reactively handle errors raised by `Vue.config.errorHandler`.
 
 ## Install
