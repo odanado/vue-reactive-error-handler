@@ -1,7 +1,8 @@
 {
-  "name": "typescript-nodejs-template",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "vue-reactive-error-handler",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^25.1.4",
