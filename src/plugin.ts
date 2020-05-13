@@ -7,9 +7,8 @@ export type Options = {
   onError?: OnError;
 };
 
-// TODO: change type
 export type State = {
-  error?: Error;
+  value?: Error;
 };
 
 declare module "vue/types/vue" {
@@ -27,10 +26,10 @@ export const plugin: PluginObject<Options> = {
     // TODO: backup origin errorHandler
 
     Vue.config.errorHandler = (err, vm, info): void | boolean => {
-      state.error = err;
+      state.value = err;
 
       setTimeout(() => {
-        state.error = undefined;
+        state.value = undefined;
       }, options?.timeout || 3000);
 
       if (options?.onError) {

@@ -32,16 +32,15 @@ describe("plugin", (): void => {
   it("should be correct", async (): Promise<void> => {
     (vm.$children[0].$refs as any).button.click();
 
-    // TODO: $error.error :(
-    expect(vm.$error.error).toBeUndefined();
+    expect(vm.$error.value).toBeUndefined();
     await vm.$nextTick();
     // for node 10
     await new Promise(resolve => process.nextTick(resolve));
-    expect(vm.$error.error).toBeDefined();
-    expect(vm.$error.error).toEqual(expected);
+    expect(vm.$error.value).toBeDefined();
+    expect(vm.$error.value).toEqual(expected);
 
     jest.runAllTimers();
 
-    expect(vm.$error.error).toBeUndefined();
+    expect(vm.$error.value).toBeUndefined();
   });
 });
