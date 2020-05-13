@@ -1,4 +1,5 @@
-import Vue, { VNode } from "vue";
+import Vue from "vue";
+
 import { plugin } from "./plugin";
 
 Vue.use(plugin);
@@ -6,7 +7,7 @@ Vue.use(plugin);
 jest.useFakeTimers();
 
 describe("plugin", (): void => {
-  // TODO: iikanjini
+  // TODO: move to util file
   const expected = new Error("expected error");
   const App = Vue.extend({
     methods: {
@@ -25,22 +26,27 @@ describe("plugin", (): void => {
       });
     }
   });
-  const vm = new Vue({
-    render: (h): VNode => h(App)
-  }).$mount();
+  const app = new App();
+  app.$mount();
 
   it("should be correct", async (): Promise<void> => {
-    (vm.$children[0].$refs as any).button.click();
+    const button = app.$refs.button;
+    if (!(button instanceof HTMLButtonElement)) {
+      throw new Error("$refs.button isn't HTMLButtonElement");
+    }
+    button.click();
 
-    expect(vm.$error.value).toBeUndefined();
-    await vm.$nextTick();
+    expect(app.$error.value).toBeUndefined();
+
+    await app.$nextTick();
     // for node 10
     await new Promise(resolve => process.nextTick(resolve));
-    expect(vm.$error.value).toBeDefined();
-    expect(vm.$error.value).toEqual(expected);
+
+    expect(app.$error.value).toBeDefined();
+    expect(app.$error.value).toEqual(expected);
 
     jest.runAllTimers();
 
-    expect(vm.$error.value).toBeUndefined();
+    expect(app.$error.value).toBeUndefined();
   });
 });
