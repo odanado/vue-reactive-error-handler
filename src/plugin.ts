@@ -14,7 +14,7 @@ declare module "vue/types/vue" {
   }
 }
 
-export const state = Vue.observable<State>({});
+export const state = Vue.observable<State>({ value: undefined });
 
 export const plugin: PluginObject<Options> = {
   install(Vue, options) {
