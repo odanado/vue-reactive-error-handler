@@ -4,7 +4,16 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "README.md",
+    "dist",
+    "package.json",
+    "yarn.lock"
+  ],
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.1",
