@@ -1,6 +1,6 @@
 {
   "name": "vue-reactive-error-handler",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,6 +31,7 @@
     "vue": "^2.6.11"
   },
   "scripts": {
+    "prebuild": "rm -rf dist",
     "build": "tsc -p tsconfig.build.json",
     "test": "run-p test:*",
     "test:build": "yarn build --noEmit",
