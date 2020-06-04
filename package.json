@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "files": [
     "README.md",
-    "dist",
+    "dist/",
     "package.json",
     "yarn.lock"
   ],
