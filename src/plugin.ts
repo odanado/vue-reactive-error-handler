@@ -25,9 +25,11 @@ export const plugin: PluginObject<Options> = {
     Vue.config.errorHandler = (err, vm, info): void | boolean => {
       state.value = err;
 
-      setTimeout(() => {
-        state.value = undefined;
-      }, options?.timeout || 3000);
+      if (options?.timeout) {
+        setTimeout(() => {
+          state.value = undefined;
+        }, options?.timeout);
+      }
 
       if (originalErrorHandler) {
         return originalErrorHandler(err, vm, info);
