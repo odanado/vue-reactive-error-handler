@@ -16,7 +16,7 @@ function setup(expectedError: Error) {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (Vue as any)._installedPlugins = [];
-  Vue.use(plugin);
+  Vue.use(plugin, { timeout: 3000 });
   const App = Vue.extend({
     methods: {
       async click(): Promise<void> {
