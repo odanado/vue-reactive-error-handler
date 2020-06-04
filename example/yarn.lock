@@ -7060,10 +7060,10 @@ vue-loader@^15.9.1:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-reactive-error-handler@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/vue-reactive-error-handler/-/vue-reactive-error-handler-0.0.5.tgz#524d5275c285c75da47c2573d153e1f636fe1299"
-  integrity sha512-vTp1ztF3PcMsZZTaTASG8d8gxvk7pMaBfusrL9KAv8Zow+Kkpo0rgWCj8IskR4d4XO3VeeSMvGbUYThMxZEx9A==
+vue-reactive-error-handler@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/vue-reactive-error-handler/-/vue-reactive-error-handler-0.0.8.tgz#8bf8ab5a759e7016e46b2cf61f762819fcb1fd10"
+  integrity sha512-ogPgm5pKq+NY3iSWIkY4JU7sjaUp3X4LjLoxHx4zK5HJki63PCj6cJH5uNGBHYTUbE9VKcPkQT+utFn1SWTV6Q==
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"
