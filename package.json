@@ -1,6 +1,6 @@
 {
   "name": "vue-reactive-error-handler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -40,7 +40,8 @@
     "test": "run-p test:*",
     "test:build": "yarn build --noEmit",
     "test:jest": "yarn jest --detectOpenHandles --forceExit",
-    "test:lint": "eslint --ext .js,.ts ."
+    "test:lint": "eslint --ext .js,.ts .",
+    "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
     "vue": "^2.6.0"
