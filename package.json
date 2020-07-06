@@ -41,7 +41,7 @@
     "build:esm": "tsc -p tsconfig.build.json",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "test": "run-p test:*",
-    "test:build": "yarn build --noEmit",
+    "test:build": "yarn build",
     "test:jest": "yarn jest --detectOpenHandles --forceExit",
     "test:lint": "eslint --ext .js,.ts .",
     "prepublishOnly": "yarn build"
