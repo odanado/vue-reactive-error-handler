@@ -1,12 +1,13 @@
 {
   "name": "vue-reactive-error-handler",
   "version": "0.1.1",
-  "main": "dist/index.js",
+  "main": "dist-cjs/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "README.md",
     "dist/",
+    "dist-cjs",
     "package.json",
     "yarn.lock"
   ],
@@ -36,7 +37,9 @@
   },
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "run-p build:*",
+    "build:esm": "tsc -p tsconfig.build.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
     "test": "run-p test:*",
     "test:build": "yarn build --noEmit",
     "test:jest": "yarn jest --detectOpenHandles --forceExit",
