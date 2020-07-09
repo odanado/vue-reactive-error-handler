@@ -12,7 +12,9 @@ async function getTextContent(
   return text?.jsonValue();
 }
 
-describe("plugin", () => {
+const browsers = ["webkit", "chromium", "firefox"] as const;
+
+describe.each(browsers)("browser %s", browserName => {
   let server: Server;
   let browser: playwright.Browser;
   let page: playwright.Page;
@@ -25,7 +27,7 @@ describe("plugin", () => {
 
     server = app.use(express.static(staticPath)).listen(3000);
 
-    browser = await playwright["chromium"].launch();
+    browser = await playwright[browserName].launch();
 
     const context = await browser.newContext();
     page = await context.newPage();
