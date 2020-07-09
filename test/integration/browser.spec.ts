@@ -12,7 +12,7 @@ async function getTextContent(
   return text?.jsonValue();
 }
 
-const browsers = ["webkit", "chromium", "firefox"] as const;
+const browsers = [/*"webkit",*/ "chromium", "firefox"] as const;
 
 describe.each(browsers)("browser %s", browserName => {
   let server: Server;
