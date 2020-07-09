@@ -26,6 +26,18 @@ export const plugin: PluginObject<Options> = {
     };
 
     Vue.config.errorHandler = errorHandler;
+
+    if (window) {
+      window.addEventListener("unhandledrejection", event => {
+        const error = event.reason;
+        createErrorHandler(state, options)(error);
+      });
+
+      window.addEventListener("error", event => {
+        const error = event.error;
+        createErrorHandler(state, options)(error);
+      });
+    }
   }
 };
 
