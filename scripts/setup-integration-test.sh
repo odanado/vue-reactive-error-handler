@@ -9,7 +9,7 @@ rm -rf $DIR/dist
 cp -r src/ $DIR/lib
 rm $DIR/lib/*.spec.ts
 
-pushd $DIR
+cd $DIR
 
 yarn
 yarn build
