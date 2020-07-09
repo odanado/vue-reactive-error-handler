@@ -39,29 +39,22 @@ describe.each(browsers)("browser %s", browserName => {
     server.close();
     await browser.close();
   });
-  it.each([
-    {
-      testid: "for-vue",
-      expected: "occurred vue error"
-    },
-    {
-      testid: "for-unhandledrejection",
-      expected: "occurred unhandledrejection"
-    },
-    {
-      testid: "for-error",
-      expected: "occurred error"
-    }
-  ])("correct %o", async ({ testid, expected }) => {
-    await page.reload();
-    await expect(getTextContent(page, "[data-testid='error']")).resolves.toBe(
-      ""
-    );
+  describe.each([
+    ["for-vue", "occurred vue error"],
+    ["for-unhandledrejection", "occurred unhandledrejection"],
+    ["for-error", "occurred error"]
+  ])("testid %s", (testid, expected) => {
+    it("should be update state", async () => {
+      await page.reload();
+      await expect(getTextContent(page, "[data-testid='error']")).resolves.toBe(
+        ""
+      );
 
-    await page.click(`[data-testid='${testid}']`);
+      await page.click(`[data-testid='${testid}']`);
 
-    await expect(getTextContent(page, "[data-testid='error']")).resolves.toBe(
-      expected
-    );
+      await expect(getTextContent(page, "[data-testid='error']")).resolves.toBe(
+        expected
+      );
+    });
   });
 });
