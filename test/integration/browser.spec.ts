@@ -40,12 +40,15 @@ describe("plugin", () => {
   it.each([
     {
       testid: "for-vue",
-      expected: "errorForVue"
+      expected: "occurred vue error"
     },
-
     {
       testid: "for-unhandledrejection",
-      expected: "errorForUnhandledrejection"
+      expected: "occurred unhandledrejection"
+    },
+    {
+      testid: "for-error",
+      expected: "occurred error"
     }
   ])("correct %o", async ({ testid, expected }) => {
     await page.reload();
