@@ -33,19 +33,23 @@ describe.each(browsers)("browser %s", browserName => {
     page = await context.newPage();
 
     await page.goto("localhost:3000");
-    await page.waitForSelector("[data-testid='error']", { state: "hidden" });
   });
   afterAll(async () => {
     server.close();
     await browser.close();
   });
+
+  beforeEach(async () => {
+    await page.reload();
+    await page.waitForSelector("[data-testid='error']", { state: "hidden" });
+  });
+
   describe.each([
     ["for-vue", "occurred vue error"],
     ["for-unhandledrejection", "occurred unhandledrejection"],
     ["for-error", "occurred error"]
   ])("testid %s", (testid, expected) => {
     it("should be update state", async () => {
-      await page.reload();
       await expect(getTextContent(page, "[data-testid='error']")).resolves.toBe(
         ""
       );
