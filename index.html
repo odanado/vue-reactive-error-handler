@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    window.addEventListener("unhandledrejection", event => {
+      console.log("Captured in unhandledrejection EventListener", event, event.reason instanceof Error);
+    })
+
+    window.addEventListener("error", event => {
+      console.log("Captured in error EventListener", event, event.error instanceof Error);
+    });
+    const a = async () => {
+      throw new Error("poyo2")
+    }
+    a().then(() => {
+      console.log("ok")
+    })
+    throw new Error("poyo1")
+  </script>
+</body>
+</html>
