@@ -27,7 +27,7 @@ export const plugin: PluginObject<Options> = {
 
     Vue.config.errorHandler = errorHandler;
 
-    if ((process && process.client) || window) {
+    if (typeof window !== "undefined") {
       window.addEventListener("unhandledrejection", event => {
         const error = event.reason;
         createErrorHandler(state, options)(error);
