@@ -7,7 +7,7 @@ const { loadNuxt } = require("nuxt");
 
 import { getTextContent } from "../utils/get-text-content";
 
-const browsers = ["chromium", "firefox", "webkit"] as const;
+const browsers = ["chromium", "firefox" /*, "webkit"*/] as const;
 
 describe.each(browsers)("nuxt %s", browserName => {
   let server: Server;
