@@ -15,6 +15,7 @@ describe.each(browsers)("nuxt %s", browserName => {
   let page: playwright.Page;
 
   beforeAll(async () => {
+    jest.setTimeout(10000);
     const app = express();
 
     const nuxt = await loadNuxt({
