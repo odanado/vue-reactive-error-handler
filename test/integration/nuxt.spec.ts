@@ -1,25 +1,30 @@
-import path from "path";
 import playwright from "playwright";
 import express from "express";
 import { Server } from "http";
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { loadNuxt } = require("nuxt");
+
 import { getTextContent } from "../utils/get-text-content";
 
-const browsers = ["chromium", "firefox", "webkit"] as const;
-// const browsers = ["webkit", "chromium", "firefox"] as const;
+const browsers = ["chromium", "firefox" /*, "webkit"*/] as const;
 
-describe.each(browsers)("browser %s", browserName => {
+describe.each(browsers)("nuxt %s", browserName => {
   let server: Server;
   let browser: playwright.Browser;
   let page: playwright.Page;
 
   beforeAll(async () => {
     jest.setTimeout(10000);
-
     const app = express();
-    const staticPath = path.join(__dirname, "../fixture/vue-app/dist");
 
-    server = app.use(express.static(staticPath)).listen(3000);
+    const nuxt = await loadNuxt({
+      for: "start",
+      rootDir: "./test/fixture/nuxt"
+    });
+    app.use(nuxt.render);
+
+    server = app.listen(3000);
 
     browser = await playwright[browserName].launch();
 

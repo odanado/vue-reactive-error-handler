@@ -1,15 +1,15 @@
-#/bin/bash
+#!/bin/bash
 
 set -eu
 
-DIR=./test/fixture/vue-app
+dir=$1
 
-rm -rf $DIR/lib
-rm -rf $DIR/dist
-cp -r src/ $DIR/lib
-rm $DIR/lib/*.spec.ts
+rm -rf $dir/lib
+rm -rf $dir/dist
+cp -r src/ $dir/lib
+rm $dir/lib/*.spec.ts
 
-cd $DIR
+cd $dir
 
 yarn
 yarn build
